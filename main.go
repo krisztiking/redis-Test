@@ -7,6 +7,8 @@ import (
 	"os"
 	"strconv"
 	"strings"
+
+	myResp "github.com/krisztiking/go-module-test"
 )
 
 func ToRespArray(command string) string {
@@ -51,19 +53,19 @@ func main() {
 			return
 		}
 
-		resp := NewResp(conn)
+		resp := myResp.NewResp(conn)
 		value, err := resp.Read()
 		if err != nil {
 			fmt.Println(err)
 			return
 		}
 
-		if value.typ == "string" {
-			fmt.Println(value.str)
+		if value.Typ == "string" {
+			fmt.Println(value.Str)
 		}
 
-		if value.typ == "bulk" {
-			fmt.Printf("\"%s\"\n", value.bulk)
+		if value.Typ == "bulk" {
+			fmt.Printf("\"%s\"\n", value.Bulk)
 		}
 
 	}
